@@ -1,0 +1,50 @@
+
+1
+Python Advanced 
+
+Aufgabe 
+1) Estelle ein Neuronales Netz um eine Klassifikation des Fashion-MNIST Datensatzes vorzunehmen.Im Datensatz befinden sich Bilder zu zehn verschiedenen Kleidungstypen:
+
+1.T-shirt/top
+2.Trouser/pants
+3.Pullover shirt
+4.Dress
+5.Coat
+6.Sandal
+7.Shirt
+8.Sneaker
+9.Bag
+10.Ankle boot
+
+Infos:https://keras.io/datasets/#fashion-mnist-database-of-fashion-articles
+https://github.com/zalandoresearch/fashion-mnist
+
+Aufruf des Datensatzes:
+from keras.datasets import fashion_mnist  #### das geht so nicht, ---> from tensorflow.keras.datasets import fashion_mnist
+(trainX,trainY),(testX,testY)=fashion_mnist.load_data()
+
+
+Aufgabe 2) 
+
+1) Überlege, wie du die Folgenden Zeilen ändern müsstest, wenn man beim Vergleich der Hunde/Katzenbilder im RGB Farbbereich wäre:
+
+import tensorflow as tf
+
+model = tf.keras.models.Sequential()
+
+model.add(tf.keras.layers.Conv2D(32, (3,3), input_shape = (100, 100, 1), activation = 'relu'))
+model.add(tf.keras.layers.MaxPooling2D(pool_size = (2, 2)))
+
+model.add(tf.keras.layers.Conv2D(32, (3,3), activation = 'relu'))
+model.add(tf.keras.layers.MaxPooling2D(pool_size = (2, 2)))
+
+model.add(tf.keras.layers.Flatten())
+model.add(tf.keras.layers.Dense(32, activation = 'relu'))
+
+model.add(tf.keras.layers.Dense(1, activation = 'sigmoid'))
+
+model.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy'])
+
+
+2) Was hätte man beim Einlesen der Bilder ändern müssen?
+
